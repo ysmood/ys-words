@@ -1,8 +1,8 @@
 # Coffeescript Project
 *.js
 
-npm-debug.log
 node_modules
 
-# Test Words
+# Test
 words.txt
+*.log
