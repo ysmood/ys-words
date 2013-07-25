@@ -1,0 +1,17 @@
+{
+  "name": "YS_Words",
+  "version": "0.0.1",
+  "description": "A quotes service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": "https://github.com/ysmood/Words.git",
+  "author": "ys",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "dependencies": {
+  	"express": "3.3.4"
+  }
+}
