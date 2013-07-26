@@ -1,6 +1,6 @@
 node_modules/.bin/coffee -c ./
 
-node index.js
+node app.js
 
-# node --debug index.js
+# node --debug app.js
 # node node_modules/.bin/node-inspector &
