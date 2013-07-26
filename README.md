@@ -4,30 +4,32 @@ A quotes service. It will grab the public note of Evernote,
 then returns specified quotes to http requests.
 
 The quotes in the note should be separated by an empty line.
-Configure the public note url in the 'config.json' file.
+Configure the public note's url in the `config.json` file.
 
 # API
 All APIs are based on http request.
 
-* **GET /all:/br**
+* `GET /all:/br`
 
-  TYPE: **json**
+  RETURN: `json`
   
-  Return all quotes in json format. If the 'br' param is not given,
-  all the '\n' symbol in the returned string will be replaced with '&lt;br />'.
+  Return all quotes in json format. If the `br` param is not given,
+  all the `\n` symbol in the returned string will be replaced with `<br />`.
 
-* **GET /words:mount**
+* `GET /words:mount`
 
-  TYPE: **json**
+  RETURN: `json` or `string`
   
   Return specified mount of random unique threads of words.
-  Such as '/words12' will return 12 threads.
+  Such as `/words12` will return 12 threads.
+  If no `mount` given, it will return a single string.
 
-* **GET /update**
+* `GET /update`
 
-  TYPE: **string**
+  RETURN: `string`
   
-  Triger the server to grab note from the Evernote.
+  Trigger the server to grab note from the Evernote.
+  It will return `Update Done` if nothing goes wrong.
 
 
 # FreeBSD Licensed
