@@ -62,12 +62,16 @@ class YS_Words
 			res.send(@words_json)
 
 	get_random_words: (req, res) ->
-		threads = []
-
 		if req.params[0]
 			mount = parseInt(req.params[0])
 		else
-			mount = 1
+			# Return only a string.
+			res.send(
+				@words[_.random(@words.length)]
+			)
+			return
+
+		threads = []
 		
 		# Randomly choose some unique numbers.
 		nums = [0 ... @words.length]
@@ -77,7 +81,7 @@ class YS_Words
 
 			nums = _.without(nums, nth)
 			
-		res.send(threads)
+		res.json(threads)
 
 	update_words: (req, res) =>
 		@load_words(->
