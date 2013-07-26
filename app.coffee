@@ -24,6 +24,13 @@ class YS_Words
 	init_config: ->
 		@config = require './config.json'
 
+		# Enable the CORS.
+		@app.all('*', (req, res, next) ->
+			res.header("Access-Control-Allow-Origin", "*")
+			res.header("Access-Control-Allow-Headers", "X-Requested-With")
+			next()
+		)
+
 	load_words: (loaded) ->
 		grab_words.load(@config.notebook_url, (words) ->
 			# Cache the words for better performance.
