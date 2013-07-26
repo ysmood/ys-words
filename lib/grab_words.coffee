@@ -1,6 +1,11 @@
-request = require 'request'
+###
 
-notebook_url = 'https://www.evernote.com/shard/s76/sh/a26821ce-b7ea-4671-8ccd-57268d0f22c7/6b380a1918325a2757823309560e7e9b'
+The Evernote parser.
+Get specified note content.
+
+###
+
+request = require 'request'
 
 filter_words = (body) ->
 	# Extract the main part of page.
@@ -27,12 +32,14 @@ filter_words = (body) ->
 
 	return words
 
-exports.load = (loaded) ->
+exports.load = (notebook_url, loaded) ->
 	request(notebook_url, (err, res, body) ->
 		if err
 			console.log(err)
 
 		words = filter_words(body)
+
+		console.log 'Note grabbed: ' + new Date().toUTCString()
 
 		loaded(words)
 	)
