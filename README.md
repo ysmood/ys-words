@@ -26,6 +26,19 @@ Configure the public note's url in the `config.json` file.
 
         npm start
 
+# Configuration
+
+* `port`
+
+  Which port listened to.
+
+* `notebook_url`
+
+  The public Evernote note's url.
+
+* `auto_grab_frq`
+
+  The frequency of how often the note should be re-grabbed, in minute.
 
 # API
 All APIs are based on http request.
