@@ -1,10 +1,31 @@
 # Overview
 
-A quotes service. It will grab the public note of Evernote,
+A high performance quotes service. It will grab the public note of Evernote,
 then returns specified quotes to http requests.
 
 The quotes in the note should be separated by an empty line.
 Configure the public note's url in the `config.json` file.
+
+# Setup
+
+ 0. Clone the project:
+
+        git clone https://github.com/ysmood/ys-words.git
+
+ 0. `cd ys-words`
+
+ 0. If you don't want to do any dev on this project,
+    you could install dependencies with `--production`:
+
+        npm install --production
+
+ 0. Edit the `config.json` file.
+    **This is a required step, the default value won't work**.
+
+ 0. Launch the service:
+
+        npm start
+
 
 # API
 All APIs are based on http request.
