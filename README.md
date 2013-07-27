@@ -42,6 +42,7 @@ Configure the public note's url in the `config.json` file.
 
 # API
 All APIs are based on http request.
+You should have some basic knowledge of the [routing expression of Express.js][1].
 
 * `GET /all:/br`
 
@@ -69,3 +70,6 @@ All APIs are based on http request.
 # FreeBSD Licensed
 
 Jul 2013 ys
+
+
+  [1]: http://expressjs.com/api.html#app.VERB
