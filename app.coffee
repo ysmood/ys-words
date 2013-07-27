@@ -21,6 +21,8 @@ class YS_Words
 		@app.listen(@config.port)
 		console.log('ys_words start on port: ' + @config.port)
 
+		@auto_grab()
+
 	init_config: ->
 		@config = require './config.json'
 
@@ -31,8 +33,8 @@ class YS_Words
 			next()
 		)
 
-	load_words: (loaded) ->
-		grab_words.load(@config.notebook_url, (words) ->
+	load_words: (loaded) =>
+		grab_words.load(@config.notebook_url, (words) =>
 			# Cache the words for better performance.
 			@words = words
 
@@ -86,6 +88,17 @@ class YS_Words
 	update_words: (req, res) =>
 		@load_words(->
 			res.send('Update Done')
+		)
+
+	# Auto download from Evernote in specified frequency.
+	auto_grab: ->
+		# If interval is 0, no auto-grab.
+		if @config.auto_grab_frq == 0
+			return
+		
+		setInterval(
+			@load_words,
+			@config.auto_grab_frq * 1000 * 60
 		)
 
 
