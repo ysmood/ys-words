@@ -57,13 +57,13 @@ class YS_Words
 
 		@app.get('/update', @update_words)		
 
-	get_all_words: (req, res) ->
+	get_all_words: (req, res) =>
 		if req.params[0] == '/br'
 			res.send(@words_json_br)
 		else
 			res.send(@words_json)
 
-	get_random_words: (req, res) ->
+	get_random_words: (req, res) =>
 		if req.params[0]
 			mount = parseInt(req.params[0])
 		else
