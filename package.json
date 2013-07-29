@@ -8,7 +8,8 @@
   },
   "main": "app.js",
   "scripts": {
-    "test": "kit/test.sh",
+    "test": "test/test.sh",
+    "debug": "kit/debug.sh",
     "start": "kit/start.sh"
   },
   "repository": {
