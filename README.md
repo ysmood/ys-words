@@ -66,6 +66,11 @@ You should have some basic knowledge of the [routing expression of Express.js][1
   Trigger the server to grab note from the Evernote.
   It will return `Update Done` if nothing goes wrong.
 
+# Debug and Test
+
+Run the server in debug mode: `npm run-script debug`.
+
+Run the auto test cases: `npm test`. Note, you should launch the server before you run the tests.
 
 # FreeBSD Licensed
 
