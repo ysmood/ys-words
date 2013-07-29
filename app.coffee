@@ -14,9 +14,14 @@ class YS_Words
 	constructor: ->
 		@app = express()
 
+		@status = 'initializing'
+
 		@init_config()
-		@load_words()
 		@init_routes()
+
+		@load_words(->
+			@status = 'ok'
+		)
 
 		@app.listen(@config.port)
 		console.log('ys_words start on port: ' + @config.port)
@@ -49,13 +54,18 @@ class YS_Words
 		)
 
 	init_routes: ->
+		@app.get('/status', @get_app_status)
+
 		# GET /all:/br
 		@app.get(/\/all(\/br)?/, @get_all_words)
 
 		# GET /words:mount
 		@app.get(/\/words(\d+)?/, @get_random_words)
 
-		@app.get('/update', @update_words)		
+		@app.get('/update', @update_words)
+
+	get_app_status: (req, res) ->
+		res.send(@status)
 
 	get_all_words: (req, res) =>
 		if req.params[0] == '/br'
