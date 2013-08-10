@@ -39,23 +39,19 @@ class YS_Words
 		)
 
 	load_words: (loaded) =>
-		try
-			grab_words.load(@config.notebook_url, (words) =>
-				# Cache the words for better performance.
-				@words = words
+		grab_words.load(@config.notebook_url, (words) =>
+			# Cache the words for better performance.
+			@words = words
 
-				@words_json = JSON.stringify(words)
+			@words_json = JSON.stringify(words)
 
-				@words_json_br = JSON.stringify(
-					words.map (s) ->
-						s.replace(/\n/g, '<br />')
-				)
-
-				if loaded then loaded()
+			@words_json_br = JSON.stringify(
+				words.map (s) ->
+					s.replace(/\n/g, '<br />')
 			)
-		catch e
-			console.log 'test'
-			console.error e
+
+			if loaded then loaded()
+		)
 		
 
 	init_routes: ->
