@@ -45,14 +45,16 @@ class YS_Words
 
 			@words_json = JSON.stringify(words)
 
-			@words_json_br = JSON.stringify(
-				words.map (s) ->
-					s.replace(/\n/g, '<br />')
-			)
+			try
+				@words_json_br = JSON.stringify(
+					words.map (s) ->
+						s.replace(/\n/g, '<br />')
+				)
+			catch e
+				console.log e
 
 			if loaded then loaded()
 		)
-		
 
 	init_routes: ->
 		@app.get('/status', @get_app_status)
@@ -85,7 +87,7 @@ class YS_Words
 			return
 
 		threads = []
-		
+
 		# Randomly choose some unique numbers.
 		nums = [0 ... @words.length]
 		for i in [0 ... mount]
@@ -93,7 +95,7 @@ class YS_Words
 			threads.push @words[nth]
 
 			nums = _.without(nums, nth)
-			
+
 		res.json(threads)
 
 	update_words: (req, res) =>
@@ -106,7 +108,7 @@ class YS_Words
 		# If interval is 0, no auto-grab.
 		if @config.auto_grab_frq == 0
 			return
-		
+
 		setInterval(
 			@load_words,
 			@config.auto_grab_frq * 1000 * 60
