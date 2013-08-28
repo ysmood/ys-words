@@ -18,7 +18,7 @@ filter_words = (body) ->
 	else
 		body = m[1]
 
-	# Remove unnecessary symbols. 
+	# Remove unnecessary symbols.
 	body = body.replace(/&quot;/g, '')
 	body = body.replace(/<\/?div>/g, '')
 
@@ -46,13 +46,14 @@ exports.load = (notebook_url, loaded) ->
 
 		words = filter_words(body)
 
-		# If nothing is got, try again a few times.
-		if not words and retry_count++ < max_retry
+		# If nothing got, try again a few seconds later.
+		if not words and not words.length and retry_count++ < max_retry
+			console.error 'Error, try again later...'
 			setTimeout(
 				->
 					exports.load(notebook_url, loaded)
 				,
-				1000 * 30
+				1000 * 3
 			)
 		else
 			retry_count = 0
