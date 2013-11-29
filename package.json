@@ -8,7 +8,8 @@
   "scripts": {
     "test": "test/test.sh",
     "debug": "kit/debug.sh",
-    "start": "kit/start.sh"
+    "start": "kit/server_ctl.sh start",
+    "stop": "kit/server_ctl.sh stop"
   },
   "repository": {
     "type": "git",
