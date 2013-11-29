@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "A high performance quotes service.",
   "homepage": "https://github.com/ysmood/ys-words",
-  "author": {
-    "name": "Yad Smood"
-  },
+  "author": "ys",
   "main": "app.js",
   "scripts": {
     "test": "test/test.sh",
@@ -13,17 +11,18 @@
     "start": "kit/start.sh"
   },
   "repository": {
-    "type" : "git",
+    "type": "git",
     "url": "https://github.com/ysmood/ys-words.git"
   },
-  "author": "ys",
   "license": "FreeBSD",
   "readmeFilename": "README.md",
   "dependencies": {
     "express": "~3.3.4",
     "underscore": "~1.5.1",
     "request": "~2.25.0",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "cheerio": "~0.12.4",
+    "forever": "~0.10.9"
   },
   "devDependencies": {
     "node-inspector": "~0.3.2"
