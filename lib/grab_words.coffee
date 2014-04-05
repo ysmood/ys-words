@@ -7,14 +7,26 @@ Get specified note content.
 
 request = require 'request'
 cheerio = require 'cheerio'
+fs = require 'fs'
+
 
 filter_words = (body) ->
 	if not body
 		return null
 
+	br = '@@@BR@@@'
+
+	body = body.replace /<div><br\/><\/div>/g, br
+
 	$ = cheerio.load(body)
 
-	words = $('.ennote').text().match(/[^(\n\n)]+/g)
+	$note = $('.ennote')
+
+	words = $note.text().split(br).map (el) ->
+		el = el.replace /\t/g, ''
+		el = el.replace /^(\n+)/, ''
+		el = el.replace /(\n+)$/, ''
+		el = el.replace /\n+/g, '\n'
 
 	return words
 
