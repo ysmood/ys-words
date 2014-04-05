@@ -1,7 +1,7 @@
 coffee='node_modules/.bin/coffee'
 forever='node_modules/.bin/forever'
 
-app='app.coffee'
+app=$(pwd)/app.coffee
 
 case $1 in
 	'start' )
