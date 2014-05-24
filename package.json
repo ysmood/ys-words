@@ -7,7 +7,7 @@
   "main": "app.js",
   "scripts": {
     "test": "test/test.sh",
-    "debug": "kit/debug.sh",
+    "debug": "coffee app.coffee",
     "start": "kit/server_ctl.sh start",
     "stop": "kit/server_ctl.sh stop"
   },

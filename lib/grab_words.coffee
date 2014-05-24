@@ -35,7 +35,16 @@ max_retry = 5
 retry_count = 0
 
 exports.load = (notebook_url, loaded) ->
-	request(notebook_url, (err, res, body) ->
+	request(notebook_url, {
+		headers: {
+			"Referer": notebook_url
+			"User-Agent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114'
+		}
+		qs: {
+			'content': ''
+		}
+	}, (err, res, body) ->
+
 		if err
 			console.log(err)
 
