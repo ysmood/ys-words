@@ -32,8 +32,8 @@ class YS_Words
 		@config = require './config.json'
 
 		# Enable the CORS.
-		@app.all('*', (req, res, next) ->
-			res.header("Access-Control-Allow-Origin", "*")
+		@app.all('*', (req, res, next) =>
+			res.header("Access-Control-Allow-Origin", @config.allowed_origin)
 			res.header("Access-Control-Allow-Headers", "X-Requested-With")
 			next()
 		)
